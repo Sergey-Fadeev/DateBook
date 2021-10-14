@@ -3,18 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		89826E5D2716E7C300EF941A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E5C2716E7C300EF941A /* AppDelegate.swift */; };
 		89826E5F2716E7C300EF941A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E5E2716E7C300EF941A /* SceneDelegate.swift */; };
-		89826E612716E7C300EF941A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E602716E7C300EF941A /* ViewController.swift */; };
-		89826E642716E7C300EF941A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89826E622716E7C300EF941A /* Main.storyboard */; };
+		89826E612716E7C300EF941A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E602716E7C300EF941A /* MainViewController.swift */; };
 		89826E662716E7C400EF941A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89826E652716E7C400EF941A /* Assets.xcassets */; };
 		89826E692716E7C400EF941A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89826E672716E7C400EF941A /* LaunchScreen.storyboard */; };
 		89826E742716E7C500EF941A /* DateBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E732716E7C500EF941A /* DateBookTests.swift */; };
 		89826E7F2716E7C500EF941A /* DateBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E7E2716E7C500EF941A /* DateBookUITests.swift */; };
+		89826E912716EBCA00EF941A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E902716EBCA00EF941A /* Realm */; };
+		89826E932716EBCA00EF941A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E922716EBCA00EF941A /* RealmSwift */; };
+		89826E952716ED4500EF941A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E942716ED4500EF941A /* Model.swift */; };
+		89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA427182BC900EF941A /* CalendarHelper.swift */; };
+		89826EA727182C9200EF941A /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA627182C9200EF941A /* CalendarCell.swift */; };
+		89826EAC2718303000EF941A /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EAB2718303000EF941A /* TaskModel.swift */; };
+		89826EAE2718320000EF941A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EAD2718320000EF941A /* EventCell.swift */; };
+		89826EB02718348500EF941A /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EAF2718348500EF941A /* EventEditViewController.swift */; };
+		89826EB62718475C00EF941A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89826EB42718475C00EF941A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +46,7 @@
 		89826E592716E7C300EF941A /* DateBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89826E5C2716E7C300EF941A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89826E5E2716E7C300EF941A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		89826E602716E7C300EF941A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		89826E632716E7C300EF941A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89826E602716E7C300EF941A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		89826E652716E7C400EF941A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89826E682716E7C400EF941A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89826E6A2716E7C400EF941A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +56,13 @@
 		89826E7A2716E7C500EF941A /* DateBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89826E7E2716E7C500EF941A /* DateBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBookUITests.swift; sourceTree = "<group>"; };
 		89826E802716E7C500EF941A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89826E942716ED4500EF941A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		89826EA427182BC900EF941A /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		89826EA627182C9200EF941A /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		89826EAB2718303000EF941A /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		89826EAD2718320000EF941A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		89826EAF2718348500EF941A /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
+		89826EB52718475C00EF941A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89826E932716EBCA00EF941A /* RealmSwift in Frameworks */,
+				89826E912716EBCA00EF941A /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +115,12 @@
 		89826E5B2716E7C300EF941A /* DateBook */ = {
 			isa = PBXGroup;
 			children = (
+				89826EB42718475C00EF941A /* Main.storyboard */,
+				89826E8C2716E80800EF941A /* Model */,
+				89826E8D2716E81000EF941A /* View */,
+				89826E8E2716E81D00EF941A /* ViewModel */,
 				89826E5C2716E7C300EF941A /* AppDelegate.swift */,
 				89826E5E2716E7C300EF941A /* SceneDelegate.swift */,
-				89826E602716E7C300EF941A /* ViewController.swift */,
-				89826E622716E7C300EF941A /* Main.storyboard */,
 				89826E652716E7C400EF941A /* Assets.xcassets */,
 				89826E672716E7C400EF941A /* LaunchScreen.storyboard */,
 				89826E6A2716E7C400EF941A /* Info.plist */,
@@ -128,6 +146,50 @@
 			path = DateBookUITests;
 			sourceTree = "<group>";
 		};
+		89826E8C2716E80800EF941A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89826E942716ED4500EF941A /* Model.swift */,
+				89826EAB2718303000EF941A /* TaskModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		89826E8D2716E81000EF941A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89826EA327182B2400EF941A /* CalendarView */,
+				89826EA827182FB800EF941A /* TaskSavingView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89826E8E2716E81D00EF941A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89826EA427182BC900EF941A /* CalendarHelper.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89826EA327182B2400EF941A /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				89826E602716E7C300EF941A /* MainViewController.swift */,
+				89826EA627182C9200EF941A /* CalendarCell.swift */,
+				89826EAD2718320000EF941A /* EventCell.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		89826EA827182FB800EF941A /* TaskSavingView */ = {
+			isa = PBXGroup;
+			children = (
+				89826EAF2718348500EF941A /* EventEditViewController.swift */,
+			);
+			path = TaskSavingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +206,10 @@
 			dependencies = (
 			);
 			name = DateBook;
+			packageProductDependencies = (
+				89826E902716EBCA00EF941A /* Realm */,
+				89826E922716EBCA00EF941A /* RealmSwift */,
+			);
 			productName = DateBook;
 			productReference = 89826E592716E7C300EF941A /* DateBook.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +281,9 @@
 				Base,
 			);
 			mainGroup = 89826E502716E7C300EF941A;
+			packageReferences = (
+				89826E8F2716EBCA00EF941A /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 89826E5A2716E7C300EF941A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,9 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89826EB62718475C00EF941A /* Main.storyboard in Resources */,
 				89826E692716E7C400EF941A /* LaunchScreen.storyboard in Resources */,
 				89826E662716E7C400EF941A /* Assets.xcassets in Resources */,
-				89826E642716E7C300EF941A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +327,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89826E612716E7C300EF941A /* ViewController.swift in Sources */,
+				89826EA727182C9200EF941A /* CalendarCell.swift in Sources */,
+				89826EAE2718320000EF941A /* EventCell.swift in Sources */,
+				89826E612716E7C300EF941A /* MainViewController.swift in Sources */,
+				89826EAC2718303000EF941A /* TaskModel.swift in Sources */,
 				89826E5D2716E7C300EF941A /* AppDelegate.swift in Sources */,
 				89826E5F2716E7C300EF941A /* SceneDelegate.swift in Sources */,
+				89826EB02718348500EF941A /* EventEditViewController.swift in Sources */,
+				89826E952716ED4500EF941A /* Model.swift in Sources */,
+				89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,20 +371,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		89826E622716E7C300EF941A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				89826E632716E7C300EF941A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		89826E672716E7C400EF941A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				89826E682716E7C400EF941A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		89826EB42718475C00EF941A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89826EB52718475C00EF941A /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -593,6 +668,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		89826E8F2716EBCA00EF941A /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89826E902716EBCA00EF941A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89826E8F2716EBCA00EF941A /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		89826E922716EBCA00EF941A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89826E8F2716EBCA00EF941A /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 89826E512716E7C300EF941A /* Project object */;
 }
