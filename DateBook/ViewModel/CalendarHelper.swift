@@ -64,7 +64,7 @@ class CalendarHelper
     func weekDay(date: Date) -> Int
     {
         let components = calendar.dateComponents([.weekday], from: date)
-        return components.weekday! - 1
+        return components.weekday! - 2
     }
     
     func addDays(date: Date, days: Int) -> Date
@@ -72,21 +72,35 @@ class CalendarHelper
         return calendar.date(byAdding: .day, value: days, to: date)!
     }
     
-    func sundayForDate(date: Date) -> Date
+    func collectionDate(day: Int) -> Date
     {
-        var current = date
-        let oneWeekAgo = addDays(date: current, days: -7)
+        let calendar = Calendar.current
+        let currentDate = Date()
+
+        var dateComponents: DateComponents? = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: currentDate)
+
+        dateComponents?.day = day
+
+        let date: Date? = calendar.date(from: dateComponents!)
         
-        while(current > oneWeekAgo)
-        {
-            let currentWeekDay = calendar.dateComponents([.weekday], from: current).weekday
-            if(currentWeekDay == 1)
-            {
-                return current
-            }
-            current = addDays(date: current, days: -1)
-        }
-        return current
+        return date!
     }
+    
+//    func mondayForDate(date: Date) -> Date
+//    {
+//        var current = date
+//        let oneWeekAgo = addDays(date: current, days: -7)
+//
+//        while(current > oneWeekAgo)
+//        {
+//            let currentWeekDay = calendar.dateComponents([.weekday], from: current).weekday
+//            if(currentWeekDay == 1)
+//            {
+//                return current
+//            }
+//            current = addDays(date: current, days: -1)
+//        }
+//        return current
+//    }
     
 }

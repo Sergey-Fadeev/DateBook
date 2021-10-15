@@ -9,13 +9,13 @@ import UIKit
 
 var selectedDate = Date()
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
 {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     
-    var totalSquares = [String]()
+    var totalSquares = [Int]()
     
     
     override func viewDidLoad()
@@ -37,22 +37,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func setMonthView()
     {
         totalSquares.removeAll()
-        
+        print(totalSquares)
         let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
+        print("\(daysInMonth) дней в текущем месяце")
         let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
+        print(firstDayOfMonth)
         let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
+        print("\(startingSpaces) - starting spaces")
         
         var count: Int = 1
         
+        
         while(count <= 42)
-        {
+        {                    //оставляет пустыми ячейки(заполняя массив пробелами): при первом                   условии перед 1-м числом месяца от понедельника, при втором                         условии после последнего числа месяца до 42 ячейки
+            
             if(count <= startingSpaces || count - startingSpaces > daysInMonth)
             {
-                totalSquares.append("")
+                totalSquares.append(0)
             }
             else
-            {
-                totalSquares.append(String(count - startingSpaces))
+            {                //начинается заполнение ячеек между отступами
+                totalSquares.append(count - startingSpaces)
             }
             count += 1
         }
@@ -62,6 +67,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.reloadData()
     }
 
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalSquares.count
     }
@@ -69,10 +75,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
         
-        cell.dayOfMonth.text = totalSquares[indexPath.item]
+        
+        if totalSquares[indexPath.item] != 0 {
+            cell.dayOfMonth.text = String(totalSquares[indexPath.item])
+            let date = totalSquares[indexPath.item]
+            if CalendarHelper().collectionDate(day: date) == selectedDate
+            {
+                cell.backgroundColor = UIColor.systemGreen
+            }
+            else
+            {
+                cell.backgroundColor = UIColor.white
+            }
+            
+        }
+        else{
+            cell.dayOfMonth.text = ""
+            cell.backgroundColor = UIColor.white
+        }
         
         return cell
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item])
+        collectionView.reloadData()
+//            tableView.reloadData()
+    }
+    
     
     @IBAction func previousMonth(_ sender: Any)
     {
