@@ -39,11 +39,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         totalSquares.removeAll()
         print(totalSquares)
         let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
-        print("\(daysInMonth) дней в текущем месяце")
-        let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
-        print(firstDayOfMonth)
+        let firstDayOfMonth = CalendarHelper().lastDateOfThePreviousMonth(date: selectedDate)
         let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
-        print("\(startingSpaces) - starting spaces")
         
         var count: Int = 1
         
@@ -79,7 +76,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if totalSquares[indexPath.item] != 0 {
             cell.dayOfMonth.text = String(totalSquares[indexPath.item])
             let date = totalSquares[indexPath.item]
-            if CalendarHelper().collectionDate(day: date) == selectedDate
+            if CalendarHelper().collectionDate(day: date, fullDate: selectedDate) == selectedDate
             {
                 cell.backgroundColor = UIColor.systemGreen
             }
@@ -100,8 +97,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item])
+        
+//        let _selectedDate = Date()
+        
+        selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item], fullDate: selectedDate)
         collectionView.reloadData()
+        
 //            tableView.reloadData()
     }
     

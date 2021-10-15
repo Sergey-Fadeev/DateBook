@@ -49,35 +49,45 @@ class CalendarHelper
         return range.count
     }
     
-    func dayOfMonth(date: Date) -> Int
-    {
-        let components = calendar.dateComponents([.day], from: date)
-        return components.day!
-    }
     
-    func firstOfMonth(date: Date) -> Date
+    func lastDateOfThePreviousMonth(date: Date) -> Date
     {
         let components = calendar.dateComponents([.year, .month], from: date)
         return calendar.date(from: components)!
     }
     
+    
     func weekDay(date: Date) -> Int
     {
-        let components = calendar.dateComponents([.weekday], from: date)
-        return components.weekday! - 2
+        let components = Calendar.current.component(.weekday, from: date) - 1
+        var dayOfWeak = 0
+        switch components {
+        case 0:
+            dayOfWeak = 6
+        case 1:
+            dayOfWeak = 0
+        case 2:
+            dayOfWeak = 1
+        case 3:
+            dayOfWeak = 2
+        case 4:
+            dayOfWeak = 3
+        case 5:
+            dayOfWeak = 4
+        case 6:
+            dayOfWeak = 5
+        default:
+            dayOfWeak = 0
+        }
+        return dayOfWeak
     }
     
-    func addDays(date: Date, days: Int) -> Date
-    {
-        return calendar.date(byAdding: .day, value: days, to: date)!
-    }
     
-    func collectionDate(day: Int) -> Date
+    func collectionDate(day: Int, fullDate: Date) -> Date
     {
         let calendar = Calendar.current
-        let currentDate = Date()
 
-        var dateComponents: DateComponents? = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: currentDate)
+        var dateComponents: DateComponents? = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: fullDate)
 
         dateComponents?.day = day
 
@@ -85,22 +95,4 @@ class CalendarHelper
         
         return date!
     }
-    
-//    func mondayForDate(date: Date) -> Date
-//    {
-//        var current = date
-//        let oneWeekAgo = addDays(date: current, days: -7)
-//
-//        while(current > oneWeekAgo)
-//        {
-//            let currentWeekDay = calendar.dateComponents([.weekday], from: current).weekday
-//            if(currentWeekDay == 1)
-//            {
-//                return current
-//            }
-//            current = addDays(date: current, days: -1)
-//        }
-//        return current
-//    }
-    
 }
