@@ -8,12 +8,16 @@
 import UIKit
 
 var selectedDate = Date()
+var totalSquaresDict: [String:String] = ["10/16/21":"Ура!!! Свершилось!!!"]
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
+class MainViewController: UIViewController
 {
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var taskTable: UITableView!
 
+    
+    let testArray: [String] = ["08:00 - 09:00", "09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00", "22:00 - 23:00", "23:00 - 00:00"]
     
     var totalSquares = [Int]()
     
@@ -21,9 +25,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        taskTable.register(UINib(nibName: "TasksTableViewCell", bundle: nil), forCellReuseIdentifier: "tasksTableViewCell")
+        taskTable.delegate = self
+        taskTable.dataSource = self
+        
         setCellsView()
         setMonthView()
+        
     }
+    
     
     func setCellsView()
     {
@@ -44,7 +55,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         var count: Int = 1
         
-        
         while(count <= 42)
         {                    //оставляет пустыми ячейки(заполняя массив пробелами): при первом                   условии перед 1-м числом месяца от понедельника, при втором                         условии после последнего числа месяца до 42 ячейки
             
@@ -63,8 +73,30 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             + " " + CalendarHelper().yearString(date: selectedDate)
         collectionView.reloadData()
     }
-
     
+    
+    @IBAction func previousMonth(_ sender: Any)
+    {
+        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
+        setMonthView()
+    }
+    
+    @IBAction func nextMonth(_ sender: Any)
+    {
+        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
+        setMonthView()
+    }
+    
+    
+    override open var shouldAutorotate: Bool
+    {
+        return false
+    }
+}
+
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource
+{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalSquares.count
     }
@@ -97,30 +129,24 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        
-//        let _selectedDate = Date()
-        
         selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item], fullDate: selectedDate)
         collectionView.reloadData()
-        
-//            tableView.reloadData()
+        taskTable.reloadData()
+    }
+}
+
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return testArray.count
     }
     
-    
-    @IBAction func previousMonth(_ sender: Any)
-    {
-        selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        setMonthView()
-    }
-    
-    @IBAction func nextMonth(_ sender: Any)
-    {
-        selectedDate = CalendarHelper().plusMonth(date: selectedDate)
-        setMonthView()
-    }
-    
-    override open var shouldAutorotate: Bool
-    {
-        return false
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = taskTable
+            .dequeueReusableCell(withIdentifier: "tasksTableViewCell")! as! TasksTableViewCell
+        cell.timeLabel.text = testArray[indexPath.row]
+        cell.taskNameLabel.text = totalSquaresDict[CalendarHelper().dayMonthYearString(date: selectedDate)]
+        return cell
     }
 }

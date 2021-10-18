@@ -8,17 +8,14 @@
 import Foundation
 import RealmSwift
 
+
 class Task: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var name: String = ""
     @Persisted var descriptionTask: String = ""
-    @Persisted var dateStart: Date?
-    @Persisted var dateFinish: Date?
+    @Persisted var dateStart: String = ""
+    @Persisted var dateFinish: String = ""
     
-
-    convenience init(name: String) {
+    convenience init(name: String, description: String, dateStart: String, dateFinish: String) {
         self.init()
-        self.name = name
     }
 }
-

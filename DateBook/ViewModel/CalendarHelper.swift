@@ -36,6 +36,14 @@ class CalendarHelper
         return dateFormatter.string(from: date)
     }
     
+    func dayMonthYearString(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy/HH:mm"
+        print(dateFormatter.string(from: date))
+        return dateFormatter.string(from: date)
+    }
+    
     func timeString(date: Date) -> String
     {
         let dateFormatter = DateFormatter()
@@ -92,7 +100,24 @@ class CalendarHelper
         dateComponents?.day = day
 
         let date: Date? = calendar.date(from: dateComponents!)
+        return date!
+    }
+    
+    
+    func zeroDate() -> Date
+    {
+        let calendar = Calendar.current
+        let fullDate = Date()
+
+        var dateComponents: DateComponents? = calendar.dateComponents([.day, .month, .year], from: fullDate)
+
+        dateComponents?.day = 0
+        dateComponents?.month = 0
+        dateComponents?.year = 0
+
+        let date = calendar.date(from: dateComponents!)
         
+        print(date!)
         return date!
     }
 }
