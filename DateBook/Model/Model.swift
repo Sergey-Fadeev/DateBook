@@ -12,8 +12,8 @@ import RealmSwift
 class Task: Object {
     @Persisted var name: String = ""
     @Persisted var descriptionTask: String = ""
-    @Persisted var dateStart: String = ""
-    @Persisted var dateFinish: String = ""
+    @Persisted var dateStart: Date
+    @Persisted var dateFinish: Date
     
     convenience init(name: String, description: String, dateStart: String, dateFinish: String) {
         self.init()

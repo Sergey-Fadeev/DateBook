@@ -29,8 +29,7 @@ class TaskSavingViewController: UIViewController {
 
     @IBAction func taskSaving(_ sender: Any)
     {
-        let dateString = CalendarHelper().dayMonthYearString(date: datePicker.date)
-        let task = Task(value: [taskName.text!, taskDescription.text!, dateString, dateString])
+        let task = Task(value: [taskName.text!, taskDescription.text!, datePicker.date, datePicker.date])
         
         try! realm.write {
             realm.add(task)
@@ -38,21 +37,12 @@ class TaskSavingViewController: UIViewController {
         
         
         let indexValue = items.firstIndex(where: { (item) -> Bool in
-            item.dateStart == dateString // test if this is the item you're looking for
+            item.dateStart == datePicker.date // test if this is the item you're looking for
           })
         
         print(items)
         print(items[indexValue!])
+        navigationController?.popViewController(animated: true)
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

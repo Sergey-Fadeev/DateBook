@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 var selectedDate = Date()
 var totalSquaresDict: [String:String] = ["10/16/21":"Ура!!! Свершилось!!!"]
@@ -16,6 +17,8 @@ class MainViewController: UIViewController
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var taskTable: UITableView!
 
+    let realm = try! Realm()
+    var items: Results<Task>!
     
     let testArray: [String] = ["08:00 - 09:00", "09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00", "22:00 - 23:00", "23:00 - 00:00"]
     
@@ -25,6 +28,8 @@ class MainViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        items = realm.objects(Task.self)
         
         taskTable.register(UINib(nibName: "TasksTableViewCell", bundle: nil), forCellReuseIdentifier: "tasksTableViewCell")
         taskTable.delegate = self
@@ -146,7 +151,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = taskTable
             .dequeueReusableCell(withIdentifier: "tasksTableViewCell")! as! TasksTableViewCell
         cell.timeLabel.text = testArray[indexPath.row]
-        cell.taskNameLabel.text = totalSquaresDict[CalendarHelper().dayMonthYearString(date: selectedDate)]
+        cell.taskNameLabel.text = items.last?.name
         return cell
     }
 }
