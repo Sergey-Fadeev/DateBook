@@ -15,7 +15,10 @@ class TaskSavingViewController: UIViewController {
     
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var timePickerStart: UIDatePicker!
+    @IBOutlet weak var timePickerFinish: UIDatePicker!
+    @IBOutlet weak var datePickerStart: UIDatePicker!
+    @IBOutlet weak var datePickerFinish: UIDatePicker!
     
     
     override func viewDidLoad() {
@@ -23,26 +26,28 @@ class TaskSavingViewController: UIViewController {
         
         items = realm.objects(Task.self)
 
-        // Do any additional setup after loading the view.
     }
     
 
     @IBAction func taskSaving(_ sender: Any)
     {
-        let task = Task(value: [taskName.text!, taskDescription.text!, datePicker.date, datePicker.date])
+        saving()
         
+        
+        navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    
+    func saving() {
+        
+        let fullDateStart =  datePickerStart.date.addingTimeInterval(timePickerStart.date.timeIntervalSinceNow)
+        
+        let task = Task(value: [taskName.text!, taskDescription.text!, fullDateStart, timePickerStart.date])
+        print("\(timePickerStart.date) - datePickerStart!!!!!!!!!!!!!")
         try! realm.write {
             realm.add(task)
         }
-        
-        
-        let indexValue = items.firstIndex(where: { (item) -> Bool in
-            item.dateStart == datePicker.date // test if this is the item you're looking for
-          })
-        
-        print(items)
-        print(items[indexValue!])
-        navigationController?.popViewController(animated: true)
-        
     }
 }

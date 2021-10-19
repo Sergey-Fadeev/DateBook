@@ -133,14 +133,14 @@
 		89826E5B2716E7C300EF941A /* DateBook */ = {
 			isa = PBXGroup;
 			children = (
-				89826EFF271DEE5100EF941A /* Observer */,
-				89826EB42718475C00EF941A /* Main.storyboard */,
-				89826E8C2716E80800EF941A /* Model */,
-				89826E8D2716E81000EF941A /* View */,
-				89826E8E2716E81D00EF941A /* ViewModel */,
 				89826E5C2716E7C300EF941A /* AppDelegate.swift */,
 				89826E5E2716E7C300EF941A /* SceneDelegate.swift */,
 				89826E652716E7C400EF941A /* Assets.xcassets */,
+				89826EFF271DEE5100EF941A /* Observer */,
+				89826E8C2716E80800EF941A /* Model */,
+				89826E8D2716E81000EF941A /* View */,
+				89826E8E2716E81D00EF941A /* ViewModel */,
+				89826EB42718475C00EF941A /* Main.storyboard */,
 				89826E672716E7C400EF941A /* LaunchScreen.storyboard */,
 				89826E6A2716E7C400EF941A /* Info.plist */,
 			);

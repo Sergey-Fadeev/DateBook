@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 
 var selectedDate = Date()
-var totalSquaresDict: [String:String] = ["10/16/21":"Ура!!! Свершилось!!!"]
 
 class MainViewController: UIViewController
 {
@@ -53,7 +52,6 @@ class MainViewController: UIViewController
     func setMonthView()
     {
         totalSquares.removeAll()
-        print(totalSquares)
         let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
         let firstDayOfMonth = CalendarHelper().lastDateOfThePreviousMonth(date: selectedDate)
         let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
@@ -109,32 +107,31 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalendarCell
         
+        let date = totalSquares[indexPath.item]
         
-        if totalSquares[indexPath.item] != 0 {
-            cell.dayOfMonth.text = String(totalSquares[indexPath.item])
-            let date = totalSquares[indexPath.item]
-            if CalendarHelper().collectionDate(day: date, fullDate: selectedDate) == selectedDate
-            {
-                cell.backgroundColor = UIColor.systemGreen
-            }
-            else
-            {
-                cell.backgroundColor = UIColor.white
-            }
+        if totalSquares[indexPath.item] != 0 && CalendarHelper().collectionDate(day: date, fullDate: selectedDate) == selectedDate {
             
+            cell.dayOfMonth.text = String(totalSquares[indexPath.item])
+            cell.backgroundColor = UIColor.systemGreen
         }
-        else{
-            cell.dayOfMonth.text = ""
+        else if totalSquares[indexPath.item] != 0 {
+            
+            cell.dayOfMonth.text = String(totalSquares[indexPath.item])
             cell.backgroundColor = UIColor.white
         }
-        
+        else {
+            cell.backgroundColor = UIColor.white
+            cell.dayOfMonth.text = ""
+        }
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+        
         selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item], fullDate: selectedDate)
+        
         collectionView.reloadData()
         taskTable.reloadData()
     }
@@ -151,7 +148,25 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = taskTable
             .dequeueReusableCell(withIdentifier: "tasksTableViewCell")! as! TasksTableViewCell
         cell.timeLabel.text = testArray[indexPath.row]
-        cell.taskNameLabel.text = items.last?.name
+        
+        
+        for item in items {
+            let dateTaskString = CalendarHelper().dayMonthYearString(date: item.dateStart)
+            let selectedDateString = CalendarHelper().dayMonthYearString(date: selectedDate)
+            
+            print("\(dateTaskString) - dateTask")
+            print("\(selectedDateString) - selectedDateString")
+            
+            
+            if dateTaskString == selectedDateString {
+                cell.taskNameLabel.text = item.name
+                break
+            }
+            else{
+                cell.taskNameLabel.text = ""
+            }
+        }
+        
         return cell
     }
 }
