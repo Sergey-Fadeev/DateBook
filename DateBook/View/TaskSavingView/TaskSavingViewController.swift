@@ -45,7 +45,6 @@ class TaskSavingViewController: UIViewController {
         let fullDateStart =  datePickerStart.date.addingTimeInterval(timePickerStart.date.timeIntervalSinceNow)
         
         let task = Task(value: [taskName.text!, taskDescription.text!, fullDateStart, timePickerStart.date])
-        print("\(timePickerStart.date) - datePickerStart!!!!!!!!!!!!!")
         try! realm.write {
             realm.add(task)
         }

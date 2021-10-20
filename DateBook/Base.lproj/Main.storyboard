@@ -238,8 +238,11 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xxl-GX-PPb">
-                                <rect key="frame" x="0.0" y="223.5" width="414" height="309.5"/>
+                                <rect key="frame" x="0.0" y="223.5" width="414" height="355"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xxl-GX-PPb" secondAttribute="height" multiplier="7:6" id="qXd-OW-y4d"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="iBe-yb-cbf">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -277,7 +280,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tableID" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="35" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="v6h-IM-XZf">
-                                <rect key="frame" x="0.0" y="533" width="399" height="329"/>
+                                <rect key="frame" x="0.0" y="578.5" width="399" height="283.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3T-iL-5do" userLabel="leftTabBar">
@@ -306,7 +309,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v6h-IM-XZf" secondAttribute="trailing" constant="15" id="goj-M6-dIT"/>
                             <constraint firstItem="yVl-is-6Nz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h7g-5o-5M8"/>
                             <constraint firstItem="v6h-IM-XZf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hh8-0K-jcx"/>
-                            <constraint firstItem="Xxl-GX-PPb" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.4" id="lIY-X3-oM4"/>
                             <constraint firstItem="yVl-is-6Nz" firstAttribute="top" secondItem="nST-AR-Lhg" secondAttribute="bottom" constant="30" id="plC-xo-RA5"/>
                             <constraint firstItem="nST-AR-Lhg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="qq3-2l-gVv"/>
                             <constraint firstItem="v6h-IM-XZf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="s3b-CK-LYA"/>
