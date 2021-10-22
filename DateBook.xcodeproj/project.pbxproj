@@ -16,7 +16,7 @@
 		89826E7F2716E7C500EF941A /* DateBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E7E2716E7C500EF941A /* DateBookUITests.swift */; };
 		89826E912716EBCA00EF941A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E902716EBCA00EF941A /* Realm */; };
 		89826E932716EBCA00EF941A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E922716EBCA00EF941A /* RealmSwift */; };
-		89826E952716ED4500EF941A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E942716ED4500EF941A /* Model.swift */; };
+		89826E952716ED4500EF941A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E942716ED4500EF941A /* Task.swift */; };
 		89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA427182BC900EF941A /* CalendarHelper.swift */; };
 		89826EA727182C9200EF941A /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA627182C9200EF941A /* CalendarCell.swift */; };
 		89826EAC2718303000EF941A /* TaskJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EAB2718303000EF941A /* TaskJSON.swift */; };
@@ -32,6 +32,8 @@
 		89826F08271DEEED00EF941A /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F07271DEEED00EF941A /* Cancellable.swift */; };
 		89826F0A271DEF0000EF941A /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F09271DEF0000EF941A /* Subscriber.swift */; };
 		89826F0C271DEF2000EF941A /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F0B271DEF2000EF941A /* ObservableObject.swift */; };
+		89826F122721DE0E00EF941A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F112721DE0E00EF941A /* DescriptionView.swift */; };
+		89826F1527232C3500EF941A /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F1427232C3500EF941A /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 		89826E7A2716E7C500EF941A /* DateBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89826E7E2716E7C500EF941A /* DateBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBookUITests.swift; sourceTree = "<group>"; };
 		89826E802716E7C500EF941A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89826E942716ED4500EF941A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		89826E942716ED4500EF941A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		89826EA427182BC900EF941A /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		89826EA627182C9200EF941A /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		89826EAB2718303000EF941A /* TaskJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskJSON.swift; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		89826F07271DEEED00EF941A /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		89826F09271DEF0000EF941A /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		89826F0B271DEF2000EF941A /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
+		89826F112721DE0E00EF941A /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		89826F1427232C3500EF941A /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +172,8 @@
 		89826E8C2716E80800EF941A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89826E942716ED4500EF941A /* Model.swift */,
+				89826F1327232C1B00EF941A /* DataProvider */,
+				89826E942716ED4500EF941A /* Task.swift */,
 				89826EAB2718303000EF941A /* TaskJSON.swift */,
 			);
 			path = Model;
@@ -179,6 +184,7 @@
 			children = (
 				89826EA327182B2400EF941A /* CalendarView */,
 				89826EA827182FB800EF941A /* TaskSavingView */,
+				89826F102721DDC900EF941A /* DescriptionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +245,22 @@
 				89826F05271DEECA00EF941A /* EventPublisher.swift */,
 			);
 			path = Publisher;
+			sourceTree = "<group>";
+		};
+		89826F102721DDC900EF941A /* DescriptionView */ = {
+			isa = PBXGroup;
+			children = (
+				89826F112721DE0E00EF941A /* DescriptionView.swift */,
+			);
+			path = DescriptionView;
+			sourceTree = "<group>";
+		};
+		89826F1327232C1B00EF941A /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				89826F1427232C3500EF941A /* DataProvider.swift */,
+			);
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,9 +404,11 @@
 				89826F08271DEEED00EF941A /* Cancellable.swift in Sources */,
 				89826EA727182C9200EF941A /* CalendarCell.swift in Sources */,
 				89826F0C271DEF2000EF941A /* ObservableObject.swift in Sources */,
+				89826F122721DE0E00EF941A /* DescriptionView.swift in Sources */,
 				89826EAE2718320000EF941A /* EventCell.swift in Sources */,
 				89826F02271DEE8500EF941A /* PublisherProtocol.swift in Sources */,
 				89826F04271DEEAB00EF941A /* DataPublisher.swift in Sources */,
+				89826F1527232C3500EF941A /* DataProvider.swift in Sources */,
 				89826E612716E7C300EF941A /* MainViewController.swift in Sources */,
 				89826EAC2718303000EF941A /* TaskJSON.swift in Sources */,
 				89826E5D2716E7C300EF941A /* AppDelegate.swift in Sources */,
@@ -393,7 +417,7 @@
 				89826EFE271DEC4E00EF941A /* TasksVM.swift in Sources */,
 				89826EF8271AD5BD00EF941A /* TasksTableViewCell.swift in Sources */,
 				89826EFC271B03CD00EF941A /* TaskSavingViewController.swift in Sources */,
-				89826E952716ED4500EF941A /* Model.swift in Sources */,
+				89826E952716ED4500EF941A /* Task.swift in Sources */,
 				89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */,
 				89826F0A271DEF0000EF941A /* Subscriber.swift in Sources */,
 			);

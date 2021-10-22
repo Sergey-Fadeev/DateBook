@@ -16,23 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-Pk-EWS">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-Pk-EWS">
                         <rect key="frame" x="15" y="0.0" width="96" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL5-JV-Sdv">
-                        <rect key="frame" x="126" y="0.0" width="184" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="111" y="0.0" width="209" height="44"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="VL5-JV-Sdv" secondAttribute="trailing" constant="10" id="DYM-96-fOa"/>
+                    <constraint firstAttribute="trailing" secondItem="VL5-JV-Sdv" secondAttribute="trailing" id="DYM-96-fOa"/>
                     <constraint firstItem="VL5-JV-Sdv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ECC-UT-0Wj"/>
-                    <constraint firstItem="VL5-JV-Sdv" firstAttribute="leading" secondItem="9Uw-Pk-EWS" secondAttribute="trailing" constant="15" id="KmI-3G-SuL"/>
+                    <constraint firstItem="VL5-JV-Sdv" firstAttribute="leading" secondItem="9Uw-Pk-EWS" secondAttribute="trailing" id="KmI-3G-SuL"/>
                     <constraint firstAttribute="bottom" secondItem="9Uw-Pk-EWS" secondAttribute="bottom" id="agi-cE-K9v"/>
                     <constraint firstItem="9Uw-Pk-EWS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iq2-7W-g6r"/>
                     <constraint firstItem="9Uw-Pk-EWS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ugx-8z-rBR"/>

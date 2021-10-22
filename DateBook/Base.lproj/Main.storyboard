@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Description View-->
         <scene sceneID="2Z7-cC-Wub">
             <objects>
-                <viewController id="wOT-cm-TK0" sceneMemberID="viewController">
+                <viewController id="wOT-cm-TK0" customClass="DescriptionView" customModule="DateBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vhj-Gg-f0b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +63,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vz6-wf-awx"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="2ys-Go-V5t" id="DWX-qx-QXU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfE-sk-3Zx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,7 +329,7 @@
                         <outlet property="collectionView" destination="Xxl-GX-PPb" id="xbd-pJ-Xkl"/>
                         <outlet property="monthLabel" destination="nST-AR-Lhg" id="1IW-H2-GFm"/>
                         <outlet property="taskTable" destination="v6h-IM-XZf" id="kui-P6-Ddy"/>
-                        <segue destination="wOT-cm-TK0" kind="show" identifier="descroptionSegue" id="yIi-Vi-GJN"/>
+                        <segue destination="wOT-cm-TK0" kind="show" identifier="descriptionSegue" id="yIi-Vi-GJN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -1,32 +1,25 @@
 //
-//  Ефыл.swift
+//  TasksVM.swift
 //  DateBook
 //
 //  Created by Sergey on 18.10.2021.
 //
 
-//import Foundation
-//import RealmSwift
-//
-//
-//class GetData {
-//    
-//    let realm = try! Realm()
-//    var items: Results<Task>!
-//    
-//    func saving() {
-//        
-//        let task = Task(value: [taskName.text!, taskDescription.text!, datePickerStart.date, datePickerStart.date])
-//        print("\(datePickerStart.date) - datePickerStart!!!!!!!!!!!!!")
-//        try! realm.write {
-//            realm.add(task)
-//        }
-//        
-//        let indexValue = items.firstIndex(where: { (item) -> Bool in
-//            item.dateStart == datePickerStart.date
-//          })
-//        
-//        print(items)
-//        print(items[indexValue!])
-//    }
-//}
+import Foundation
+import RealmSwift
+
+
+class GetData {
+    
+    let realm = try! Realm()
+    var items: Results<Task>!
+    
+    func saving(taskName: String, descriptionTask: String, dateStart: Date, dateFinish: Date) {
+        
+        let task = Task(name: taskName, description: descriptionTask, dateStart: dateStart, dateFinish: dateFinish)
+        
+        try! realm.write {
+            realm.add(task)
+        }
+    }
+}

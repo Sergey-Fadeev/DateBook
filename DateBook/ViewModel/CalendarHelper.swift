@@ -44,6 +44,13 @@ class CalendarHelper
         return day
     }
     
+    func timeString(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
+    }
+    
     func dayMonthYearString(date: Date) -> String
     {
         let dateFormatter = DateFormatter()
