@@ -16,33 +16,37 @@ class MainViewController: UIViewController
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var taskTable: UITableView!
     
-
-    let realm = try! Realm()
-    var items: Results<Task>!
-    
-    
-    var descriptionForTask: [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-    var dateStartTask: [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-    var dateFinishTask: [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-    let timeForDayArray: [String] = ["00:00 - 01:00", "01:00 - 02:00", "02:00 - 03:00", "03:00 - 04:00", "04:00 - 05:00", "05:00 - 06:00", "06:00 - 07:00", "07:00 - 08:00", "08:00 - 09:00", "09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00", "22:00 - 23:00", "23:00 - 00:00"]
-    var masksToBounds: Bool = false
-    
     
     var totalSquares: [Int] = []
+    
+    
+    var viewModel: TasksVM!
+    var vmCancellable: Cancellable? = nil
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        items = realm.objects(Task.self)
-        
         taskTable.register(UINib(nibName: "TasksTableViewCell", bundle: nil), forCellReuseIdentifier: "tasksTableViewCell")
         taskTable.delegate = self
         taskTable.dataSource = self
         
+        viewModel = .init(model: tasksSingletone)
+//        viewModel.getTasks(selectedDate: selectedDate)
+        vmCancellable = viewModel
+            .objectWillChange
+            .sink { [self] in
+                DispatchQueue.main.async { [weak self] in
+                    if self != nil{
+                        taskTable.reloadData()
+                    }
+                }
+        }
+        
         setCellsView()
         setMonthView()
+        
     }
     
     
@@ -149,70 +153,24 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeForDayArray.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "descriptionSegue", sender: tableView.cellForRow(at: indexPath))
+        return 24
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let timeForDayArray: [String] = ["00:00 - 01:00", "01:00 - 02:00", "02:00 - 03:00", "03:00 - 04:00", "04:00 - 05:00", "05:00 - 06:00", "06:00 - 07:00", "07:00 - 08:00", "08:00 - 09:00", "09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00", "22:00 - 23:00", "23:00 - 00:00"]
         let cell = taskTable
             .dequeueReusableCell(withIdentifier: "tasksTableViewCell")! as! TasksTableViewCell
         cell.timeLabel.text = timeForDayArray[indexPath.row]
         
-        var tasksForDayArray: [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-        var colorForCell: [UIColor] = [.clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear, .clear]
-
         
-        var count: Int = 0
-        while count <= 23 {
-            for item in items {
-                let dateTaskString = CalendarHelper().dayMonthYearString(date: item.dateStart)
-                let selectedDateString = CalendarHelper().dayMonthYearString(date: selectedDate)
-                let hourOfDay = CalendarHelper().hourOfDay(date: item.dateStart)
-        
-                if dateTaskString == selectedDateString && count == hourOfDay {
-                    tasksForDayArray[count] = item.name
-                    descriptionForTask[count] = item.descriptionTask
-                    dateStartTask[count] = CalendarHelper().timeString(date: item.dateStart)
-                    dateFinishTask[count] = CalendarHelper().timeString(date: item.dateFinish)
-                    masksToBounds = true
-                    colorForCell[count] = #colorLiteral(red: 0.6625885367, green: 0.8203471303, blue: 0.8733372688, alpha: 1)
-                }
-                else if dateTaskString == selectedDateString{
-                    tasksForDayArray[count] = ""
-                    descriptionForTask[count] = ""
-                    colorForCell[count] = .clear
-                }
-            }
-            count += 1
-                
-        }
-        
-        cell.taskNameLabel.text = "  \(tasksForDayArray[indexPath.row])"
-        cell.taskNameLabel.layer.masksToBounds = masksToBounds
-        cell.taskNameLabel.layer.cornerRadius = 10
-        cell.taskNameLabel.backgroundColor = colorForCell[indexPath.row]
-        
+   
+            
+        cell.taskNameLabel.text = viewModel.taskList?.tasksList![indexPath.row].taskName
         return cell
     }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UITableViewCell {
-            let selectedIndex = self.taskTable.indexPath(for: cell)!.row
-            if segue.identifier == "descriptionSegue" {
-                let vc = segue.destination as! DescriptionView
-                vc.descriptionTask = descriptionForTask[selectedIndex]
-                vc.dateStart = dateStartTask[selectedIndex]
-                vc.dateFinish = dateFinishTask[selectedIndex]
-            }
-        }
-    }
+        
     
     
     override func viewDidAppear(_ animated: Bool)

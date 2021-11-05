@@ -8,18 +8,37 @@
 import Foundation
 import RealmSwift
 
-
-class GetData {
+class TasksVM: ObservableObject {
     
-    let realm = try! Realm()
-    var items: Results<Task>!
     
-    func saving(taskName: String, descriptionTask: String, dateStart: Date, dateFinish: Date) {
-        
-        let task = Task(name: taskName, description: descriptionTask, dateStart: dateStart, dateFinish: dateFinish)
-        
-        try! realm.write {
-            realm.add(task)
-        }
+    var objectWillChange: PublisherProtocol = EventPublisher()
+    var modelChangeCancellable: Cancellable? = nil
+    
+    var provider = DataProvider()
+    
+    
+    var taskList: TasksList?
+    
+    
+    init(model: TaskModel){
+        taskList?.tasksList = model.tasksList
+        modelChangeCancellable = tasksSingletone
+            .objectWillChange
+            .sink { [weak self] in
+                self!.taskList!.tasksList = model.tasksList!
+                
+                self!.objectWillChange.notify()
+            }
     }
+    
+//    func getTasks(selectedDate: Date){
+//        tasksSingletone.getTasks(selectedDate: selectedDate)
+//    }
+     
+    
+    func addTasks(startDate: Date, stopDate: Date, taskName: String, taskDescription: String) {
+        tasksSingletone.addTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
+        
+    }
+    
 }

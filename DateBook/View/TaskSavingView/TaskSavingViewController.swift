@@ -10,7 +10,10 @@ import RealmSwift
 
 class TaskSavingViewController: UIViewController {
 
-    let getData = GetData()
+    let realm = try! Realm()
+    var items: Results<Tasks>!
+    
+    var viewModel: TasksVM! = nil
     
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
@@ -22,18 +25,32 @@ class TaskSavingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        items = realm.objects(Tasks.self)
+        viewModel = .init(model: tasksSingletone)
 
     }
     
 
     @IBAction func taskSaving(_ sender: Any)
     {
-        let fullDateStart = datePickerStart.date.addingTimeInterval(timePickerStart.date.timeIntervalSinceNow)
-        let fullDateFinish = datePickerFinish.date.addingTimeInterval(timePickerFinish.date.timeIntervalSinceNow)
+        saving()
         
-        getData.saving(taskName: taskName.text ?? "", descriptionTask: taskDescription.text, dateStart: fullDateStart, dateFinish: fullDateFinish)
         
         navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    
+    func saving() {
+        
+        let fullDateStart =  datePickerStart.date.addingTimeInterval(timePickerStart.date.timeIntervalSinceNow)
+        let fullDateFinish =  datePickerFinish.date.addingTimeInterval(timePickerFinish.date.timeIntervalSinceNow)
+        
+        
+        viewModel.addTasks(startDate: fullDateStart, stopDate: fullDateFinish, taskName: taskName.text!, taskDescription: taskDescription.text)
+        
         
     }
 }
