@@ -19,8 +19,13 @@ import RealmSwift
 //        self.init()
 //    }
 //}
+class TaskDayModel: Object {
+    @objc dynamic var date: String?
+    dynamic var taskObjectArray = List<TaskHourModel>()
+}
 
-class Task: Object {
+
+class TaskHourModel: Object {
     @objc dynamic var dt_start: Date?
     @objc dynamic var dt_stop: Date?
     @objc dynamic var taskName: String? = ""
@@ -29,7 +34,4 @@ class Task: Object {
 }
 
 
-class Tasks: Object {
-    @objc dynamic var date: String?
-    dynamic var taskObjectArray = List<Task>()
-}
+

@@ -15,7 +15,7 @@
 		89826E7F2716E7C500EF941A /* DateBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E7E2716E7C500EF941A /* DateBookUITests.swift */; };
 		89826E912716EBCA00EF941A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E902716EBCA00EF941A /* Realm */; };
 		89826E932716EBCA00EF941A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89826E922716EBCA00EF941A /* RealmSwift */; };
-		89826E952716ED4500EF941A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E942716ED4500EF941A /* Task.swift */; };
+		89826E952716ED4500EF941A /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826E942716ED4500EF941A /* DataStructures.swift */; };
 		89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA427182BC900EF941A /* CalendarHelper.swift */; };
 		89826EA727182C9200EF941A /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EA627182C9200EF941A /* CalendarCell.swift */; };
 		89826EAC2718303000EF941A /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EAB2718303000EF941A /* TaskModel.swift */; };
@@ -23,7 +23,7 @@
 		89826EF8271AD5BD00EF941A /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EF6271AD5BD00EF941A /* TasksTableViewCell.swift */; };
 		89826EF9271AD5BD00EF941A /* TasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89826EF7271AD5BD00EF941A /* TasksTableViewCell.xib */; };
 		89826EFC271B03CD00EF941A /* TaskSavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EFB271B03CD00EF941A /* TaskSavingViewController.swift */; };
-		89826EFE271DEC4E00EF941A /* TasksVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EFD271DEC4D00EF941A /* TasksVM.swift */; };
+		89826EFE271DEC4E00EF941A /* TasksListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826EFD271DEC4D00EF941A /* TasksListVM.swift */; };
 		89826F02271DEE8500EF941A /* PublisherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F01271DEE8500EF941A /* PublisherProtocol.swift */; };
 		89826F04271DEEAB00EF941A /* DataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F03271DEEAB00EF941A /* DataPublisher.swift */; };
 		89826F06271DEECA00EF941A /* EventPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89826F05271DEECA00EF941A /* EventPublisher.swift */; };
@@ -65,7 +65,7 @@
 		89826E7A2716E7C500EF941A /* DateBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89826E7E2716E7C500EF941A /* DateBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBookUITests.swift; sourceTree = "<group>"; };
 		89826E802716E7C500EF941A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89826E942716ED4500EF941A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		89826E942716ED4500EF941A /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		89826EA427182BC900EF941A /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		89826EA627182C9200EF941A /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		89826EAB2718303000EF941A /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		89826EF6271AD5BD00EF941A /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		89826EF7271AD5BD00EF941A /* TasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksTableViewCell.xib; sourceTree = "<group>"; };
 		89826EFB271B03CD00EF941A /* TaskSavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSavingViewController.swift; sourceTree = "<group>"; };
-		89826EFD271DEC4D00EF941A /* TasksVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVM.swift; sourceTree = "<group>"; };
+		89826EFD271DEC4D00EF941A /* TasksListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListVM.swift; sourceTree = "<group>"; };
 		89826F01271DEE8500EF941A /* PublisherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherProtocol.swift; sourceTree = "<group>"; };
 		89826F03271DEEAB00EF941A /* DataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPublisher.swift; sourceTree = "<group>"; };
 		89826F05271DEECA00EF941A /* EventPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPublisher.swift; sourceTree = "<group>"; };
@@ -169,10 +169,9 @@
 		89826E8C2716E80800EF941A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89826F1327232C1B00EF941A /* DataProvider */,
-				89826E942716ED4500EF941A /* Task.swift */,
 				89826EAB2718303000EF941A /* TaskModel.swift */,
 				89A8E034272FF0F0002467B0 /* TasksList.swift */,
+				89826F1327232C1B00EF941A /* DataProvider */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,7 +189,7 @@
 		89826E8E2716E81D00EF941A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				89826EFD271DEC4D00EF941A /* TasksVM.swift */,
+				89826EFD271DEC4D00EF941A /* TasksListVM.swift */,
 				89826EA427182BC900EF941A /* CalendarHelper.swift */,
 			);
 			path = ViewModel;
@@ -256,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				89826F1427232C3500EF941A /* DataProvider.swift */,
+				89826E942716ED4500EF941A /* DataStructures.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -417,10 +417,10 @@
 				89826EAC2718303000EF941A /* TaskModel.swift in Sources */,
 				89826E5D2716E7C300EF941A /* AppDelegate.swift in Sources */,
 				89826F06271DEECA00EF941A /* EventPublisher.swift in Sources */,
-				89826EFE271DEC4E00EF941A /* TasksVM.swift in Sources */,
+				89826EFE271DEC4E00EF941A /* TasksListVM.swift in Sources */,
 				89826EF8271AD5BD00EF941A /* TasksTableViewCell.swift in Sources */,
 				89826EFC271B03CD00EF941A /* TaskSavingViewController.swift in Sources */,
-				89826E952716ED4500EF941A /* Task.swift in Sources */,
+				89826E952716ED4500EF941A /* DataStructures.swift in Sources */,
 				89826EA527182BC900EF941A /* CalendarHelper.swift in Sources */,
 				89A8E035272FF0F0002467B0 /* TasksList.swift in Sources */,
 				89826F0A271DEF0000EF941A /* Subscriber.swift in Sources */,

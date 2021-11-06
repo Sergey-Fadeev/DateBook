@@ -11,9 +11,9 @@ import RealmSwift
 class TaskSavingViewController: UIViewController {
 
     let realm = try! Realm()
-    var items: Results<Tasks>!
+    var items: Results<TaskDayModel>!
     
-    var viewModel: TasksVM! = nil
+    var viewModel: TasksListVM! = nil
     
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
@@ -26,8 +26,8 @@ class TaskSavingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = realm.objects(Tasks.self)
-        viewModel = .init(model: tasksSingletone)
+        items = realm.objects(TaskDayModel.self)
+        viewModel = .init()
 
     }
     
@@ -49,7 +49,7 @@ class TaskSavingViewController: UIViewController {
         let fullDateFinish =  datePickerFinish.date.addingTimeInterval(timePickerFinish.date.timeIntervalSinceNow)
         
         
-        viewModel.addTasks(startDate: fullDateStart, stopDate: fullDateFinish, taskName: taskName.text!, taskDescription: taskDescription.text)
+        viewModel.addTask(startDate: fullDateStart, stopDate: fullDateFinish, taskName: taskName.text!, taskDescription: taskDescription.text)
         
         
     }

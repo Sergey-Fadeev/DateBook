@@ -17,9 +17,9 @@ import Foundation
 import RealmSwift
 
 class TasksList {
-    var tasksList: List<Task>?
+    var tasksList: List<TaskHourModel>?
     
-    init?(dataRepo: Tasks) {
+    init?(dataRepo: TaskDayModel) {
         self.tasksList = dataRepo.taskObjectArray
     }
 }

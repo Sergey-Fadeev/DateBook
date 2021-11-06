@@ -20,7 +20,7 @@ class MainViewController: UIViewController
     var totalSquares: [Int] = []
     
     
-    var viewModel: TasksVM!
+    var viewModel: TasksListVM!
     var vmCancellable: Cancellable? = nil
     
     
@@ -32,7 +32,7 @@ class MainViewController: UIViewController
         taskTable.delegate = self
         taskTable.dataSource = self
         
-        viewModel = .init(model: tasksSingletone)
+        viewModel = .init()
 //        viewModel.getTasks(selectedDate: selectedDate)
         vmCancellable = viewModel
             .objectWillChange
@@ -43,7 +43,6 @@ class MainViewController: UIViewController
                     }
                 }
         }
-        
         setCellsView()
         setMonthView()
         
@@ -167,7 +166,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
    
             
-        cell.taskNameLabel.text = viewModel.taskList?.tasksList![indexPath.row].taskName
+        cell.taskNameLabel.text = "vgvgvgvgv"
         return cell
     }
         
