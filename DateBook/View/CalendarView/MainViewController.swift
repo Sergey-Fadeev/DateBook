@@ -20,7 +20,7 @@ class MainViewController: UIViewController
     var totalSquares: [Int] = []
     
     
-    var viewModel: TasksListVM!
+    var viewModel: TasksListVM! = .init()
     var vmCancellable: Cancellable? = nil
     
     
@@ -31,9 +31,7 @@ class MainViewController: UIViewController
         taskTable.register(UINib(nibName: "TasksTableViewCell", bundle: nil), forCellReuseIdentifier: "tasksTableViewCell")
         taskTable.delegate = self
         taskTable.dataSource = self
-        
-        viewModel = .init()
-//        viewModel.getTasks(selectedDate: selectedDate)
+    
         vmCancellable = viewModel
             .objectWillChange
             .sink { [self] in
@@ -45,7 +43,7 @@ class MainViewController: UIViewController
         }
         setCellsView()
         setMonthView()
-        
+        viewModel.selectDate(selectedDate: selectedDate)
     }
     
     
@@ -143,6 +141,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     {
         selectedDate = CalendarHelper().collectionDate(day: totalSquares[indexPath.item], fullDate: selectedDate)
         
+        viewModel.selectDate(selectedDate: selectedDate)
         collectionView.reloadData()
         taskTable.reloadData()
     }
@@ -152,7 +151,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 24
+        return viewModel.taskDay.data?.taskObjectArray.count ?? 3
     }
     
     
@@ -166,7 +165,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
    
             
-        cell.taskNameLabel.text = "vgvgvgvgv"
+        cell.taskNameLabel.text = ((viewModel.taskDay.data?.taskObjectArray[indexPath.row].taskName) ?? "")
         return cell
     }
         

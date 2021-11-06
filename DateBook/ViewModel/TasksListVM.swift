@@ -15,21 +15,23 @@ class TasksListVM: ObservableObject {
     var taskListChangeCancellable: Cancellable? = nil
     
     
-    lazy var tasksList: DataPublisher<TasksList?> = .init(initial: nil, observableObject: self)
+    let taskDay = tasksSingletone.tasksModel.taskPublisher
     
 
     init(){
+        taskListChangeCancellable = taskDay.sink {
+            self.objectWillChange.notify()
+        }
     }
     
-    
-    private func getTasks(selectedDate: Date){
-        tasksSingletone.getTasks(selectedDate: selectedDate)
+    func selectDate(selectedDate: Date){
+        tasksSingletone.tasksModel.load(selectedDate: selectedDate)
     }
      
     
     
     func addTask(startDate: Date, stopDate: Date, taskName: String, taskDescription: String) {
-        let newModel = tasksSingletone.addTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
+        tasksSingletone.tasksModel.addTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
     }
     
 }

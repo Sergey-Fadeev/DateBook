@@ -14,26 +14,21 @@ class DataProvider {
     let realm = try! Realm()
 
     
-    func getTasks (selectedDate: Date) -> DataPublisher<TaskDayModel> {
+    func getTasks (selectedDate: Date) -> TaskDayModel {
         
         var tasks = TaskDayModel()
         let tasksList = List<TaskHourModel>()
         var results: Results<TaskDayModel>!
         results = realm.objects(TaskDayModel.self)
-        var counter = 0
         
         var isAdded: Bool = false
         
         
         guard !realm.isEmpty else {
-            while counter <= 23 {
-                tasksList.append(TaskHourModel(value: ["dt_start": nil, "dt_stop": nil, "taskName": "", "taskDescription": ""]))
-                counter += 1
-            }
+            
             
             tasks.taskObjectArray = tasksList
-            let tasksPublisher = DataPublisher(initial: tasks, observableObject: nil)
-            return tasksPublisher
+            return tasks
         }
         
         for item in results {
@@ -51,9 +46,7 @@ class DataProvider {
             }
             tasks.taskObjectArray = tasksList
         }
-        
-        let tasksPublisher = DataPublisher(initial: tasks, observableObject: nil)
-        return tasksPublisher
+        return tasks
     }
     
     

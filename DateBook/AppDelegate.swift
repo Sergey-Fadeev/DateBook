@@ -7,7 +7,7 @@
 
 import UIKit
 
-var tasksSingletone = TaskModel()
+var tasksSingletone = Model()
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
