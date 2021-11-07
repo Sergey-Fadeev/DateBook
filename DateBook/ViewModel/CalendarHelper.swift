@@ -17,10 +17,12 @@ class CalendarHelper
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
     
+    
     func minusMonth(date: Date) -> Date
     {
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
+    
     
     func monthString(date: Date) -> String
     {
@@ -29,12 +31,14 @@ class CalendarHelper
         return dateFormatter.string(from: date)
     }
     
+    
     func yearString(date: Date) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         return dateFormatter.string(from: date)
     }
+    
     
     func dayOfMonth(date: Date) -> Int
     {
@@ -44,12 +48,14 @@ class CalendarHelper
         return day
     }
     
+    
     func timeString(date: Date) -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: date)
     }
+    
     
     func dayMonthYearString(date: Date) -> String
     {
@@ -58,6 +64,7 @@ class CalendarHelper
         return dateFormatter.string(from: date)
     }
     
+    
     func hourOfDay(date: Date) -> Int
     {
         let calendar = Calendar.current
@@ -65,6 +72,7 @@ class CalendarHelper
         let day = components.hour!
         return day
     }
+    
     
     func daysInMonth(date: Date) -> Int
     {

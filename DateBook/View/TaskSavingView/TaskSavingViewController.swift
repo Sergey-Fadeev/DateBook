@@ -19,8 +19,6 @@ class TaskSavingViewController: UIViewController {
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var timePickerStart: UIDatePicker!
     @IBOutlet weak var timePickerFinish: UIDatePicker!
-    @IBOutlet weak var datePickerStart: UIDatePicker!
-    @IBOutlet weak var datePickerFinish: UIDatePicker!
     
     
     override func viewDidLoad() {
@@ -28,29 +26,19 @@ class TaskSavingViewController: UIViewController {
         
         items = realm.objects(TaskDayModel.self)
         viewModel = .init()
-
+        timePickerStart.date = selectedDate
+        timePickerFinish.date = selectedDate
     }
     
 
     @IBAction func taskSaving(_ sender: Any)
     {
         saving()
-        
-        
         navigationController?.popViewController(animated: true)
-        
-        
     }
     
     
     func saving() {
-        
-        let fullDateStart =  datePickerStart.date.addingTimeInterval(timePickerStart.date.timeIntervalSinceNow)
-        let fullDateFinish =  datePickerFinish.date.addingTimeInterval(timePickerFinish.date.timeIntervalSinceNow)
-        
-        
-        viewModel.addTask(startDate: fullDateStart, stopDate: fullDateFinish, taskName: taskName.text!, taskDescription: taskDescription.text)
-        
-        
+        viewModel.addTask(startDate: timePickerStart.date, stopDate: timePickerFinish.date, taskName: taskName.text!, taskDescription: taskDescription.text)
     }
 }
