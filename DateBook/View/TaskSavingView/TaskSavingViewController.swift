@@ -19,6 +19,8 @@ class TaskSavingViewController: UIViewController {
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var timePickerStart: UIDatePicker!
     @IBOutlet weak var timePickerFinish: UIDatePicker!
+    @IBOutlet weak var dayMonthLabel: UILabel!
+    
     
     var alert = UIAlertController(title: "Внимание!", message: "I am an alert message you cannot dissmiss.", preferredStyle: .alert)
     let ok = UIAlertAction(title: "OK", style: .default)
@@ -31,6 +33,7 @@ class TaskSavingViewController: UIViewController {
         viewModel = .init()
         timePickerStart.date = selectedDate
         timePickerFinish.date = selectedDate
+        dayMonthLabel.text = "\(String(CalendarHelper().dayOfMonth(date: selectedDate)))  \(String(CalendarHelper().monthString(date: selectedDate)))"
         
         alert.addAction(ok)
     }

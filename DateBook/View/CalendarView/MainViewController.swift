@@ -185,6 +185,22 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return conf
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if viewModel.taskDay.data?.taskObjectArray[indexPath.row].dt_start != nil{
+            performSegue(withIdentifier: "descriptionSegue", sender: tableView.cellForRow(at: indexPath))
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell {
+            let selectedIndex = self.taskTable.indexPath(for: cell)!.row
+            if segue.identifier == "descriptionSegue" {
+                let vc = segue.destination as! DescriptionView
+                vc.VMList = (viewModel.taskDay.data?.taskObjectArray[selectedIndex])!
+            }
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool)
     {
