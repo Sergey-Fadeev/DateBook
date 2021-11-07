@@ -32,12 +32,17 @@ class TasksModel {
     }
     
     func addTasks (startDate: Date, stopDate: Date, taskName: String, taskDescription: String){
-            dataProvider.saveTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
+        dataProvider.saveTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
         load(selectedDate: startDate)
     }
     
     func deleteTask(selectedDate: Date){
         dataProvider.deleteTask(selectedDate: selectedDate)
         load(selectedDate: selectedDate)
+    }
+    
+    func contains(_selectedDate: Date) -> Bool{
+        let contains = dataProvider.contains(_selectedDate: _selectedDate)
+        return contains
     }
 }

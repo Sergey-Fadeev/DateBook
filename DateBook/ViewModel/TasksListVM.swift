@@ -29,13 +29,18 @@ class TasksListVM: ObservableObject {
     }
      
     
-    
     func addTask(startDate: Date, stopDate: Date, taskName: String, taskDescription: String) {
         tasksSingletone.tasksModel.addTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
     }
     
     func deleteTask(selectedDate: Date){
         tasksSingletone.tasksModel.deleteTask(selectedDate: selectedDate)
+    }
+    
+    
+    func contains(_selectedDate: Date) -> Bool{
+        let contains = tasksSingletone.tasksModel.contains(_selectedDate: _selectedDate)
+        return contains
     }
     
 }

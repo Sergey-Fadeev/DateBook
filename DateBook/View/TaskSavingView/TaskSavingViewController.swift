@@ -20,6 +20,9 @@ class TaskSavingViewController: UIViewController {
     @IBOutlet weak var timePickerStart: UIDatePicker!
     @IBOutlet weak var timePickerFinish: UIDatePicker!
     
+    var alert = UIAlertController(title: "Внимание!", message: "I am an alert message you cannot dissmiss.", preferredStyle: .alert)
+    let ok = UIAlertAction(title: "OK", style: .default)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +31,23 @@ class TaskSavingViewController: UIViewController {
         viewModel = .init()
         timePickerStart.date = selectedDate
         timePickerFinish.date = selectedDate
+        
+        alert.addAction(ok)
     }
     
 
     @IBAction func taskSaving(_ sender: Any)
     {
-        saving()
-        navigationController?.popViewController(animated: true)
+        print("\(timePickerStart.date) - picker")
+        if !viewModel.contains(_selectedDate: timePickerStart.date){
+            saving()
+            navigationController?.popViewController(animated: true)
+        }
+        else{
+            alert.message = "На выбранное время уже что то запланировано!"
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     

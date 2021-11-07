@@ -20,13 +20,18 @@ class DataProvider {
         let tasksList = List<TaskHourModel>()
         var results: Results<TaskDayModel>!
         results = realm.objects(TaskDayModel.self)
+        var counter = 0
         
         var isAdded: Bool = false
         
         
         guard !realm.isEmpty else {
             
-            
+            while counter <= 23 {
+                tasksList.append(TaskHourModel(value: ["dt_start": nil, "dt_stop": nil, "taskName": "", "taskDescription": ""]))
+                counter += 1
+            }
+
             tasks.taskObjectArray = tasksList
             return tasks
         }
@@ -88,14 +93,13 @@ class DataProvider {
             
             if dateInTasksList == selectedDateString {
                 try! realm.write{
-                    for task in item.taskObjectArray{
-                        if task.dt_start != nil && CalendarHelper().hourOfDay(date: task.dt_start!) == CalendarHelper().hourOfDay(date: startDate){
-                            task.taskName = taskName
-                            task.taskDescription = taskDescription
-                            task.dt_stop = stopDate
-                            isAdded = true
-                        }
-                    }
+                    
+                    item.taskObjectArray[hourOfDay].dt_start = startDate
+                    item.taskObjectArray[hourOfDay].taskName = taskName
+                    item.taskObjectArray[hourOfDay].taskDescription = taskDescription
+                    item.taskObjectArray[hourOfDay].dt_stop = stopDate
+                    
+                    isAdded = true
                 }
             }
         }
@@ -105,7 +109,7 @@ class DataProvider {
             let _items = List<TaskHourModel>()
             let _itemsTasks = TaskDayModel()
             var _counter = 0
-            while _counter < 23 {
+            while _counter <= 23 {
                 if _counter != hourOfDay{
                     _items.append(TaskHourModel(value: ["dt_start": nil, "dt_stop": nil, "taskName": "", "taskDescription": ""]))
                     
@@ -120,6 +124,7 @@ class DataProvider {
                 realm.add(_itemsTasks)
             }
         }
+        print(results)
     }
     
     
@@ -137,6 +142,24 @@ class DataProvider {
             }
         }
     }
+    
+    
+    func contains(_selectedDate: Date)->Bool {
+        var contains: Bool = false
+        var results: Results<TaskDayModel>!
+        results = realm.objects(TaskDayModel.self)
+        
+        guard !realm.isEmpty else{
+            return contains
+        }
+        for item in results {
+            if item.date == CalendarHelper().dayMonthYearString(date: _selectedDate) && item.taskObjectArray[CalendarHelper().hourOfDay(date: _selectedDate)].dt_start != nil{
+                contains = true
+            }
+        }
+        return contains
+    }
+}
     
     
 //    func fetchTasks(startDate: Date, stopDate: Date, taskName: String, taskDescription: String)  -> DataPublisher<Tasks>{
@@ -183,5 +206,4 @@ class DataProvider {
 //            taskPublisher.data = item
 //        }
 //        return taskPublisher
-//    }
-}
+
