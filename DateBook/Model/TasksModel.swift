@@ -35,4 +35,9 @@ class TasksModel {
             dataProvider.saveTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
         load(selectedDate: startDate)
     }
+    
+    func deleteTask(selectedDate: Date){
+        dataProvider.deleteTask(selectedDate: selectedDate)
+        load(selectedDate: selectedDate)
+    }
 }

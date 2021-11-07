@@ -34,4 +34,8 @@ class TasksListVM: ObservableObject {
         tasksSingletone.tasksModel.addTasks(startDate: startDate, stopDate: stopDate, taskName: taskName, taskDescription: taskDescription)
     }
     
+    func deleteTask(selectedDate: Date){
+        tasksSingletone.tasksModel.deleteTask(selectedDate: selectedDate)
+    }
+    
 }

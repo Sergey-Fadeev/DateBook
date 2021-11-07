@@ -170,6 +170,21 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
         
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteCity = UIContextualAction(style: .destructive, title: "Удалить") { action, view, success in
+            self.taskTable.reloadData()
+            print(self.viewModel.taskDay.data?.taskObjectArray.count)
+            print(self.taskTable.numberOfSections)
+            DispatchQueue.main.async {
+                self.viewModel.deleteTask(selectedDate: selectedDate)
+//                self.VM.cityWhetherList[indexPath.row].deleteWeatherCity()
+            }
+        }
+        let conf = UISwipeActionsConfiguration(actions: [deleteCity])
+        conf.performsFirstActionWithFullSwipe = false
+        return conf
+    }
+    
     
     override func viewDidAppear(_ animated: Bool)
     {
