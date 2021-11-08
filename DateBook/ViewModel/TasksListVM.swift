@@ -42,5 +42,4 @@ class TasksListVM: ObservableObject {
         let contains = tasksSingletone.tasksModel.contains(_selectedDate: _selectedDate)
         return contains
     }
-    
 }

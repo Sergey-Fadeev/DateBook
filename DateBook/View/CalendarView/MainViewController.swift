@@ -41,6 +41,7 @@ class MainViewController: UIViewController
                     }
                 }
         }
+        
         setCellsView()
         setMonthView()
         viewModel.selectDate(selectedDate: selectedDate)
@@ -51,7 +52,6 @@ class MainViewController: UIViewController
     {
         let width = (collectionView.frame.size.width - 2) / 8
         let height = (collectionView.frame.size.height - 2) / 6
-        
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
     }
@@ -67,14 +67,13 @@ class MainViewController: UIViewController
         var count: Int = 1
         
         while(count <= 42)
-        {                    //оставляет пустыми ячейки(заполняя массив пробелами): при первом                   условии перед 1-м числом месяца от понедельника, при втором                         условии после последнего числа месяца до 42 ячейки
-            
+        {
             if(count <= startingSpaces || count - startingSpaces > daysInMonth)
             {
                 totalSquares.append(0)
             }
             else
-            {                //начинается заполнение ячеек между отступами
+            {                //заполнение ячеек между отступами
                 totalSquares.append(count - startingSpaces)
             }
             count += 1
@@ -163,10 +162,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = taskTable
             .dequeueReusableCell(withIdentifier: "tasksTableViewCell")! as! TasksTableViewCell
         cell.timeLabel.text = timeForDayArray[indexPath.row]
-        
-        
-   
-            
         cell.taskNameLabel.text = ((viewModel.taskDay.data?.taskObjectArray[indexPath.row].taskName) ?? "")
         return cell
     }
@@ -175,11 +170,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteCity = UIContextualAction(style: .destructive, title: "Удалить") { action, view, success in
             self.taskTable.reloadData()
-            print(self.viewModel.taskDay.data?.taskObjectArray.count)
-            print(self.taskTable.numberOfSections)
             DispatchQueue.main.async {
                 self.viewModel.deleteTask(selectedDate: selectedDate)
-//                self.VM.cityWhetherList[indexPath.row].deleteWeatherCity()
             }
         }
         let conf = UISwipeActionsConfiguration(actions: [deleteCity])
@@ -187,11 +179,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return conf
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if viewModel.taskDay.data?.taskObjectArray[indexPath.row].dt_start != nil{
             performSegue(withIdentifier: "descriptionSegue", sender: tableView.cellForRow(at: indexPath))
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UITableViewCell {
@@ -203,11 +197,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    
+
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         taskTable.reloadData()
     }
-    
 }

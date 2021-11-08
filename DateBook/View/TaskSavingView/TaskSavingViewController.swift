@@ -34,14 +34,12 @@ class TaskSavingViewController: UIViewController {
         timePickerStart.date = selectedDate
         timePickerFinish.date = selectedDate
         dayMonthLabel.text = "\(String(CalendarHelper().dayOfMonth(date: selectedDate)))  \(String(CalendarHelper().monthString(date: selectedDate)))"
-        
         alert.addAction(ok)
     }
     
 
     @IBAction func taskSaving(_ sender: Any)
     {
-        print("\(timePickerStart.date) - picker")
         if !viewModel.contains(_selectedDate: timePickerStart.date){
             saving()
             navigationController?.popViewController(animated: true)
@@ -50,7 +48,6 @@ class TaskSavingViewController: UIViewController {
             alert.message = "На выбранное время уже что то запланировано!"
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
     

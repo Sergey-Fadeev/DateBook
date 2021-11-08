@@ -13,17 +13,14 @@ class DataProvider {
     
     let realm = try! Realm()
 
-    
     func getTasks (selectedDate: Date) -> TaskDayModel {
-        
         var tasks = TaskDayModel()
         let tasksList = List<TaskHourModel>()
         var results: Results<TaskDayModel>!
         results = realm.objects(TaskDayModel.self)
+        
         var counter = 0
-        
         var isAdded: Bool = false
-        
         
         guard !realm.isEmpty else {
             
@@ -31,7 +28,6 @@ class DataProvider {
                 tasksList.append(TaskHourModel(value: ["dt_start": nil, "dt_stop": nil, "taskName": "", "taskDescription": ""]))
                 counter += 1
             }
-
             tasks.taskObjectArray = tasksList
             return tasks
         }
@@ -58,11 +54,11 @@ class DataProvider {
     
     func saveTasks(startDate: Date, stopDate: Date, taskName: String, taskDescription: String){
         
-        var counter = 0
         let hourOfDay = CalendarHelper().hourOfDay(date: startDate)
         let items = List<TaskHourModel>()
         let itemsTasks = TaskDayModel()
         
+        var counter = 0
         var isAdded: Bool = false
         
         guard !realm.isEmpty else {
@@ -124,7 +120,6 @@ class DataProvider {
                 realm.add(_itemsTasks)
             }
         }
-        print(results)
     }
     
     
@@ -160,50 +155,3 @@ class DataProvider {
         return contains
     }
 }
-    
-    
-//    func fetchTasks(startDate: Date, stopDate: Date, taskName: String, taskDescription: String)  -> DataPublisher<Tasks>{
-//
-//        items = realm.objects(Tasks.self)
-//
-//        let taskPublisher = DataPublisher(initial: Tasks.placeholder, observableObject: nil)
-//        var counter = 0
-//        let hourOfDay = CalendarHelper().hourOfDay(date: selectedDate)
-//
-//
-//        guard items != nil else {
-//            let tasksList = Tasks()
-//            while counter < 23 {
-//                if counter != hourOfDay{
-//                    tasksList.taskObjectArray.append(Task())
-//                }else{
-//                    tasksList.taskObjectArray.append(Task())
-//                }
-//                counter += 1
-//            }
-//            taskPublisher.data = tasksList
-//            return taskPublisher
-//        }
-//
-//
-//        for item in items {
-//            let selectedDateString = CalendarHelper().dayMonthYearString(date: startDate)
-//
-//            let dateInTasksList = CalendarHelper().dayMonthYearString(date: item.taskObjectArray.first!.dt_start!)
-//
-//            if dateInTasksList == selectedDateString {
-//
-//                try! realm.write{
-//                    for task in item.taskObjectArray{
-//                        if  CalendarHelper().hourOfDay(date: task.dt_start!) == CalendarHelper().hourOfDay(date: startDate){
-//                            task.taskName = taskName
-//                            task.taskDescription = taskDescription
-//                            task.dt_stop = stopDate
-//                        }
-//                    }
-//                }
-//            }
-//            taskPublisher.data = item
-//        }
-//        return taskPublisher
-
