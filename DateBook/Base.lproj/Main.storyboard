@@ -171,7 +171,7 @@
             </objects>
             <point key="canvasLocation" x="708.69565217391312" y="93.75"/>
         </scene>
-        <!--Monthly Calendar-->
+        <!--DateBook-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="DateBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -320,7 +320,7 @@
                             <constraint firstItem="Lxz-mE-fK1" firstAttribute="height" secondItem="nST-AR-Lhg" secondAttribute="height" id="xYZ-89-FIU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Monthly Calendar" id="ntj-gU-PmD">
+                    <navigationItem key="navigationItem" title="DateBook" id="ntj-gU-PmD">
                         <barButtonItem key="rightBarButtonItem" title="Добавить" id="bil-Th-X1f">
                             <connections>
                                 <segue destination="ZuH-3C-GRg" kind="show" identifier="saveSegue" id="fkx-RX-5Sf"/>

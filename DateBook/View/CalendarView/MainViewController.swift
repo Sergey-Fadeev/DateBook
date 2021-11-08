@@ -90,12 +90,14 @@ class MainViewController: UIViewController
     @IBAction func previousMonth(_ sender: Any)
     {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
+        viewModel.selectDate(selectedDate: selectedDate)
         setMonthView()
     }
     
     @IBAction func nextMonth(_ sender: Any)
     {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
+        viewModel.selectDate(selectedDate: selectedDate)
         setMonthView()
     }
     

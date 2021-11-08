@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import RealmSwift
+
 @testable import DateBook
 
 class DateBookTests: XCTestCase {
@@ -22,7 +24,19 @@ class DateBookTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    
+    func test_contains(){
+        let selectedDate = Date()
+        let anotherDate = CalendarHelper().plusMonth(date: selectedDate)
+        
+        let containsForSelectedDate: Bool = DataProvider().contains(_selectedDate: selectedDate)
+        let containsForAnotherDate: Bool = DataProvider().contains(_selectedDate: anotherDate)
+        print(containsForSelectedDate)
+        print(containsForAnotherDate)
+    }
 
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
