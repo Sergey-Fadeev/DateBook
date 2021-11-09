@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,38 +17,48 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-Pk-EWS">
-                        <rect key="frame" x="15" y="0.0" width="96" height="44"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-Pk-EWS">
+                        <rect key="frame" x="10" y="0.0" width="48" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL5-JV-Sdv">
-                        <rect key="frame" x="111" y="0.0" width="209" height="44"/>
+                        <rect key="frame" x="68" y="0.0" width="0.0" height="44"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INC-51-WLE">
+                        <rect key="frame" x="214" y="0.0" width="96" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="VL5-JV-Sdv" secondAttribute="trailing" id="DYM-96-fOa"/>
+                    <constraint firstItem="INC-51-WLE" firstAttribute="width" secondItem="9Uw-Pk-EWS" secondAttribute="width" multiplier="2" id="Cxj-Ab-SQO"/>
                     <constraint firstItem="VL5-JV-Sdv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ECC-UT-0Wj"/>
-                    <constraint firstItem="VL5-JV-Sdv" firstAttribute="leading" secondItem="9Uw-Pk-EWS" secondAttribute="trailing" id="KmI-3G-SuL"/>
+                    <constraint firstAttribute="bottom" secondItem="INC-51-WLE" secondAttribute="bottom" id="Fwm-Xv-iac"/>
+                    <constraint firstItem="VL5-JV-Sdv" firstAttribute="leading" secondItem="9Uw-Pk-EWS" secondAttribute="trailing" constant="10" id="KmI-3G-SuL"/>
                     <constraint firstAttribute="bottom" secondItem="9Uw-Pk-EWS" secondAttribute="bottom" id="agi-cE-K9v"/>
                     <constraint firstItem="9Uw-Pk-EWS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iq2-7W-g6r"/>
-                    <constraint firstItem="9Uw-Pk-EWS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ugx-8z-rBR"/>
+                    <constraint firstItem="INC-51-WLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kyj-8R-lqC"/>
+                    <constraint firstAttribute="trailing" secondItem="INC-51-WLE" secondAttribute="trailing" constant="10" id="saz-xM-Oy0"/>
+                    <constraint firstItem="9Uw-Pk-EWS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ugx-8z-rBR"/>
                     <constraint firstAttribute="bottom" secondItem="VL5-JV-Sdv" secondAttribute="bottom" id="wt5-4w-ab4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <constraints>
-                <constraint firstItem="9Uw-Pk-EWS" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.3" id="wZG-fl-9Ns"/>
+                <constraint firstItem="9Uw-Pk-EWS" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.15" id="pR9-vG-3ik"/>
             </constraints>
             <connections>
+                <outlet property="startStopTimeLabel" destination="INC-51-WLE" id="JYN-FQ-zSZ"/>
                 <outlet property="taskNameLabel" destination="VL5-JV-Sdv" id="AlU-Nd-aYQ"/>
                 <outlet property="timeLabel" destination="9Uw-Pk-EWS" id="9vo-cv-B0l"/>
             </connections>
-            <point key="canvasLocation" x="139" y="69"/>
+            <point key="canvasLocation" x="137.68115942028987" y="68.973214285714278"/>
         </tableViewCell>
     </objects>
 </document>

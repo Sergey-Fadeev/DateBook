@@ -29,6 +29,7 @@ class TaskSavingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        taskName.delegate = self
         items = realm.objects(TaskDayModel.self)
         viewModel = .init()
         timePickerStart.date = selectedDate
@@ -53,5 +54,16 @@ class TaskSavingViewController: UIViewController {
     
     func saving() {
         viewModel.addTask(startDate: timePickerStart.date, stopDate: timePickerFinish.date, taskName: taskName.text!, taskDescription: taskDescription.text)
+    }
+}
+
+
+extension TaskSavingViewController: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 15
+        let currentString: NSString = (textField.text ?? "") as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
 }
