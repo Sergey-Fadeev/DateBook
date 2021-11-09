@@ -47,6 +47,7 @@ class DataProvider {
             }
             tasks.taskObjectArray = tasksList
         }
+        print(results)
         return tasks
     }
     
@@ -132,11 +133,15 @@ class DataProvider {
             let dateInTasksList = item.date
             if dateInTasksList == selectedDateString {
                 try! realm.write{
-                    
                     item.taskObjectArray[numberCell].dt_start = nil
                     item.taskObjectArray[numberCell].taskName = nil
                     item.taskObjectArray[numberCell].taskDescription = nil
                     item.taskObjectArray[numberCell].dt_stop = nil
+                }
+            }
+            if item.taskObjectArray.filter({ $0.dt_start == nil }).count >= 24{
+                try! realm.write{
+                    realm.delete(item)
                 }
             }
         }
