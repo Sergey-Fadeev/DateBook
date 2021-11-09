@@ -123,7 +123,7 @@ class DataProvider {
     }
     
     
-    func deleteTask (selectedDate: Date) {
+    func deleteTask (selectedDate: Date, numberCell: Int) {
         var results: Results<TaskDayModel>!
         results = realm.objects(TaskDayModel.self)
         
@@ -131,8 +131,12 @@ class DataProvider {
             let selectedDateString = CalendarHelper().dayMonthYearString(date: selectedDate)
             let dateInTasksList = item.date
             if dateInTasksList == selectedDateString {
-                try! realm.write {
-                    realm.delete(item)
+                try! realm.write{
+                    
+                    item.taskObjectArray[numberCell].dt_start = nil
+                    item.taskObjectArray[numberCell].taskName = nil
+                    item.taskObjectArray[numberCell].taskDescription = nil
+                    item.taskObjectArray[numberCell].dt_stop = nil
                 }
             }
         }

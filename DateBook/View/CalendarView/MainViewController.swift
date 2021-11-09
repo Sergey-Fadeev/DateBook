@@ -180,7 +180,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let deleteCity = UIContextualAction(style: .destructive, title: "Удалить") { action, view, success in
             self.taskTable.reloadData()
             DispatchQueue.main.async {
-                self.viewModel.deleteTask(selectedDate: selectedDate)
+                self.viewModel.deleteTask(selectedDate: selectedDate, numberCell: indexPath.row)
             }
         }
         let conf = UISwipeActionsConfiguration(actions: [deleteCity])

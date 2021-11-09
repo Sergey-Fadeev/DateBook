@@ -28,8 +28,8 @@ class TasksModel {
         load(selectedDate: startDate)
     }
     
-    func deleteTask(selectedDate: Date){
-        dataProvider.deleteTask(selectedDate: selectedDate)
+    func deleteTask(selectedDate: Date, numberCell: Int){
+        dataProvider.deleteTask(selectedDate: selectedDate, numberCell: numberCell)
         load(selectedDate: selectedDate)
     }
     
