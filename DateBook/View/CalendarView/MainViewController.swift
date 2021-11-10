@@ -167,7 +167,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let data = viewModel.taskDay.data
         guard data != nil && ((data?.taskObjectArray[indexPath.row].dt_start) != nil) else{
             cell.startStopTimeLabel.text = ""
-            cell.backgroundColor = .clear
+            cell.backgroundViewCell.backgroundColor = .clear
             return cell
         }
         cell.startStopTimeLabel.text = "\(CalendarHelper().timeString(date: (data!.taskObjectArray[indexPath.row].dt_start!)))-\(CalendarHelper().timeString(date: (data!.taskObjectArray[indexPath.row].dt_stop!)))"
