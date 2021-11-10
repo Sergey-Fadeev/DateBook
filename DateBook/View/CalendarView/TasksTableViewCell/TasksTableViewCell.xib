@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UrC-h3-ksa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="9Uw-Pk-EWS">
                         <rect key="frame" x="10" y="0.0" width="48" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -41,9 +46,13 @@
                     <constraint firstItem="VL5-JV-Sdv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ECC-UT-0Wj"/>
                     <constraint firstAttribute="bottom" secondItem="INC-51-WLE" secondAttribute="bottom" id="Fwm-Xv-iac"/>
                     <constraint firstItem="VL5-JV-Sdv" firstAttribute="leading" secondItem="9Uw-Pk-EWS" secondAttribute="trailing" constant="10" id="KmI-3G-SuL"/>
+                    <constraint firstAttribute="bottom" secondItem="UrC-h3-ksa" secondAttribute="bottom" id="PR4-q0-uH8"/>
                     <constraint firstAttribute="bottom" secondItem="9Uw-Pk-EWS" secondAttribute="bottom" id="agi-cE-K9v"/>
+                    <constraint firstItem="UrC-h3-ksa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c1C-rd-0AX"/>
                     <constraint firstItem="9Uw-Pk-EWS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iq2-7W-g6r"/>
                     <constraint firstItem="INC-51-WLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kyj-8R-lqC"/>
+                    <constraint firstAttribute="trailing" secondItem="UrC-h3-ksa" secondAttribute="trailing" id="lan-tL-wuC"/>
+                    <constraint firstItem="UrC-h3-ksa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pjd-hu-oOH"/>
                     <constraint firstAttribute="trailing" secondItem="INC-51-WLE" secondAttribute="trailing" constant="10" id="saz-xM-Oy0"/>
                     <constraint firstItem="9Uw-Pk-EWS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ugx-8z-rBR"/>
                     <constraint firstAttribute="bottom" secondItem="VL5-JV-Sdv" secondAttribute="bottom" id="wt5-4w-ab4"/>
@@ -54,11 +63,17 @@
                 <constraint firstItem="9Uw-Pk-EWS" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="0.15" id="pR9-vG-3ik"/>
             </constraints>
             <connections>
+                <outlet property="backgroundViewCell" destination="UrC-h3-ksa" id="GYh-3c-G1H"/>
                 <outlet property="startStopTimeLabel" destination="INC-51-WLE" id="JYN-FQ-zSZ"/>
                 <outlet property="taskNameLabel" destination="VL5-JV-Sdv" id="AlU-Nd-aYQ"/>
                 <outlet property="timeLabel" destination="9Uw-Pk-EWS" id="9vo-cv-B0l"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="68.973214285714278"/>
+            <point key="canvasLocation" x="137.68115942028987" y="68.303571428571431"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

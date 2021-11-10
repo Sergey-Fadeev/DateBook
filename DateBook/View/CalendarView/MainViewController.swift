@@ -171,7 +171,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         cell.startStopTimeLabel.text = "\(CalendarHelper().timeString(date: (data!.taskObjectArray[indexPath.row].dt_start!)))-\(CalendarHelper().timeString(date: (data!.taskObjectArray[indexPath.row].dt_stop!)))"
-        cell.backgroundColor = #colorLiteral(red: 0.6625885367, green: 0.8203471303, blue: 0.8733372688, alpha: 1)
+        cell.backgroundViewCell.backgroundColor = #colorLiteral(red: 0.6625885367, green: 0.8203471303, blue: 0.8733372688, alpha: 1)
+        cell.backgroundViewCell.layer.cornerRadius = 8
+        cell.backgroundViewCell.layer.masksToBounds = true
         return cell
     }
         
